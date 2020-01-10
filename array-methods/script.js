@@ -200,3 +200,44 @@ const englishSpeakers = students
 // }, []);
 
 // ["Johnny", "Tim"]
+
+// 🚨🚨🚨 ⬇️ MUTATE ⬇️ 🚨🚨🚨
+
+const randomNumbers = [3, 1, 9, 8, 42, 1221, -5];
+
+// sort mutates the array in place and returns a reference to the mutated array
+const sortedNumbers = randomNumbers.slice().sort(function(a, b) {
+  /*
+    // ascending order
+  if (a > b) {
+    return 1; // positive number
+  }
+  if (a === b) {
+    return 0; // 0 => order remains
+  }
+  if (b > a) {
+    return -1; // negative number
+  }
+  */
+  return a - b;
+});
+
+const sortedGarage = garage.slice().sort(function(a, b) {
+  if (a.year === b.year) {
+    // return a.miles - b.miles;
+    return b.make.localeCompare(a.make);
+  }
+  return a.year - b.year;
+});
+
+console.table(garage);
+
+const reversed = garage.reverse();
+// reverse, as sort does, mutates the array in place, and returns a reference to the mutated array
+// reversed === garage; // true
+
+console.table(garage);
+
+// deep clone -> JSON.parse(JSON.stringify(obj)); ⚠️ -> no methods
+// implement it with recursive shallow copies; ⚠️ -> difficult to handle all edge cases
+// library -> https://lodash.com/docs/4.17.15#cloneDeep
